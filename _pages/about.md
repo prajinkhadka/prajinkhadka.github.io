@@ -21,7 +21,7 @@ I am experianced in :
 - Research, development of **Speaker verification system.**
 - Error analysis of current system, **data analysis** for possible feature extension, Research, development, Build **Plagiarism for Nepali language** ( Syntactic and Semantic ), **OCR for Nepali text**, **Elastic search**, **Word/ Sentence Embedding**
 
-Thats my [Github](https://github.com/staeiou/staeiou.github.io) where I experiament with things.
+Thats my [Github](https://github.com/prajinkhadka) where I experiament with things.
 I am avaialble here in [LinkedIn](https://www.linkedin.com/in/prajin-khadka-75a43a15b/)
 
 Here, I will be mostly posting the Blogs, Tutorials, Talks that I am involved in
