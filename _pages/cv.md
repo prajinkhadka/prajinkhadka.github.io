@@ -15,17 +15,17 @@ Education
 
 Work experience
 ======
-* Machine Learning Engineer, 2019:
-  * Fusemachines
+* Machine Learning Engineer, Fusemachines, 2019
 
 Skills
 ======
-* Python
-* Machine Learning
-* Deep Learning
-* SQL, MongoDB
-* AWS, Azure
-* Flask, FastAPI
+* Python, Java
+* Machine Learning, Scikit-learn, Scipy, OpenCv
+* Pandas, Numpy, Matplotlib
+* Flask, Pytorch, JIRA, CI/CD Pipeline ), Flask , FastAPI
+* Deep Learning, Tensorflow/Keras, Pytorch
+* Git, Docker, Kubernetes, CI/CD with Github Action
+* Familiar With: C, C++, SQL, MongoDB, LaTeX, Azure, AWS Services, Elastic Search
 
 Publications
 ======
@@ -44,7 +44,3 @@ Teaching
   <ul>{% for post in site.teaching %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
