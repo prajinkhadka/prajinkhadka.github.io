@@ -13,7 +13,7 @@ name                     : &name "Prajin Khadka"
 description              : &description "personal description"
 url                      :  "http://prajinkhadka.com.np"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "academicpages/academicpages.github.io"
+repository               : "prajinkhadka/prajinkhadka.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "academicpages"
+  github           : "prajinkhakda"
   google_plus      :
   keybase          :
   instagram        :
