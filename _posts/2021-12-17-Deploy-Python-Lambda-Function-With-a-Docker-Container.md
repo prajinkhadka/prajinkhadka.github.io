@@ -1,6 +1,6 @@
 # Deploying Python Lambda Function with a Docker Container 
 
-Have you ever deployed an application on the cloud ? or just in a simple EC2 server. You have to look into a lot of configs, and management such as scaling, resources to be used, cost optimization if ports are to be opened, or triggering the application from another service. Or, if you use docker and EKS to deploy it's another nightmare to configure the Kubernetes, configurations, and access management. 
+Have you ever deployed an application on the cloud ? or just in a simple an EC2 server. You have to look into a lot of configs, and management such as scaling, resources to be used, cost optimization if ports are to be opened, or triggering the application from another service. Or, if you use docker and EKS to deploy it's another nightmare to configure the Kubernetes, configurations, and access management. 
 
 Recently AWS has launched a service where we can deploy any Docker container on AWS lambda. You can find more details on what is lambda [here](https://aws.amazon.com/lambda/). Basically, in simple terms, Lambda is a Serverless compute engine where you just deploy your application and all the resources are managed by AWS. Also, the lambda function won't be running 24*7 which means, the cost will only occur if the lambda function is invoked, if not, there would be no cost. 
 
