@@ -11,7 +11,7 @@ The event is mainly focused on Microsoft Imagine Cup, queries related to it, how
 - An ideathon is a short, intensive, workshop-like experience for students to address some of the most pressing challenges of our time. Participants work in teams and use design thinking and innovative learning practices to ideate and collaborate on possible solutions.
 
 **What is Microsoft Imagine Cup ?**
-- An ideathon is a short, intensive, workshop-like experience for students to address some of the most pressing challenges of our time. Participants work in teams and use design thinking and innovative learning practices to ideate and collaborate on possible solutions.
+- Imagine Cup is an annual competition sponsored and hosted by Microsoft Corp. which brings together student developers worldwide to help resolve some of the world’s toughest challenges.
 
 
 If you are student, does not matter you should be from IT or Engineering stream, if you want to learn more about technology, the impacts we can create with our knowledge. Getting into global platform, I would encourage all of you to join us coming Friday on Dec 31 2022. 
