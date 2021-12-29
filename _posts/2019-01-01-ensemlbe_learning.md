@@ -83,6 +83,7 @@ So far in Momentum based gradient descent, we are going to move by at least  ![]
 
 Well, the idea is to calculate the gradients after moving ,
 ![](https://raw.githubusercontent.com/prajinkhadka/Optimization_Algorithms_Visualization/53828634aebd83490784a1dc286742f9f7b7ae28/Visualization%20Results/12.svg)
+
  i.e ![](https://raw.githubusercontent.com/prajinkhadka/Optimization_Algorithms_Visualization/c30eecdd4ebb6a91870a7750e09eb9b6352e10cf/Visualization%20Results/13.svg) what we are saying is, first lets  partially update the value and then calculate the gradients as compared to momentum based, we were moving two steps and calculating gradients.
 
 
