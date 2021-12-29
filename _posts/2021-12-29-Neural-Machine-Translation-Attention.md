@@ -15,11 +15,15 @@ The paper demonstrates the use of attention with Seq-to-Seq Encoder-Decoder base
 
 <embed src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://raw.githubusercontent.com/prajinkhadka/annotated-papers/main/NMT_ALIGN_TRANSLATE-compressed.pdf" width="500" height="375">
 
-
+<br>
+<br>
+Citation 
+```
 @misc{title={Neural Machine Translation by Jointly Learning to Align and Translate}, 
       author={Dzmitry Bahdanau, Kyunghyun Cho, Yoshua Bengio},
       year={2016},
       eprint={1409.0473v7},
       archivePrefix={arXiv},
       primaryClass={cs.CL}
-}
+} 
+```
