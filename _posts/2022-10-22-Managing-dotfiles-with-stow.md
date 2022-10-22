@@ -7,12 +7,14 @@ I reckon there are many like me who have a hard time managing, updating dotfiles
 There are many other ways, and programs specifically available to manage such as WADM, dotty etc but here I am going to use a symlink manager to manage dotfiles efficiently. 
 
 
-So, **what are dotfiles ?** 
+So, **what are dotfiles ?**
+
 Dotfiles are configuaration files for each program/tool that you have installed and you want to configure in the way you want.
 For example, one simple dotfile is the .gitconfig or, .bashrc or .vimrc which sets up configuration for a specific program/tool as specified. 
-Mostly they reside in $HOME/.config or in $HOME.
+Mostly they reside in ```$HOME/.config``` or in ```$HOME```
 
-**Why to manage dotfiles ?** 
+**Why to manage dotfiles ?**
+
 Well, as a programmer, much of the time is spent writing, reviewing code, ( of course stand ups and meetings). In the course of time, we usually install a lot of toolsets, the configurations that have evolved over a long period of time. 
 But what if we have to set up a new PC, should I go over all that config evolution again ? well optimally speaking obviously not. 
 What if I occasionally login to a server and manage some scripts, I would like to have the server behave as close as my local machine with the same config. So, should I first set up the server  first? Well, optimally speaking obviously not. 
@@ -40,31 +42,22 @@ Usage :
 Suppose I have directory structure as : ``` folder1/folder2/folder3/file.py``` 
 
 
-Now, let's say I am in folder2 which is the stow directory from where I will be running stow. 
-In that case, it will attempt to stow folder3. folder3 is the directory that is going to stow. 
-And folder1 is the place where it will stow folder3 i.e folder1 would be the target directory. 
+Now, let's say I am in ```folder2``` which is the ```stow directory``` from where 
+I will be executing stow. In that case, it will attempt to stow ```folder3```. 
+```folder3``` is the directory that is going to stow  i.e. ```source directory```. 
+And, ```folder1``` is the place where it will stow ```folder3``` i.e ```folder1``` 
+would be the ```target directory```. 
 
-Target directory is always the parent directory, the thing that is going to stow is the child directory from the directory where stow is executed(stow directory) if using default.
+Target directory is always the parent directory, the thing that is going to stow is the 
+child directory from the directory where stow is executed(stow directory) 
+( this is the default behaviour, obviously you can change this ) 
 
-
-
-
-
-
-
-
-
-
-
-
-Running `ls -la``  on target directory(folder1) gives the following output before executing stow.
+Running `ls -la`  on target directory(folder1) gives the following output before 
+executing stow.
  
-
-We have no symlinks created as of now. 
+We have no symlinks created as of now.
 
 Now lets move to folder 2 ```cd folder2``, and run ```stow .``` 
-
-
 
 We do not see any logs. That is expected.
 
@@ -72,13 +65,11 @@ Now, let's go back to folder1 which is our target directory, and check if there 
 
 ``` cd .. && ls -la``` 
 
-
-
 Well, now we see we have a new directory which is folder3 which is the symlink of the source directory. It's not copying, it's just pointing to the folder. The changes that you make in any source or target directory will be reflected in both of them. 
 
-Tips: 
-To remove the symlink just run ``` stow -D .``` from folder1. 
-### Managing dotfile 
+To remove the symlink just run ``` stow -D .``` from folder1.
+
+### Managing dotfiles 
 
 We have dotfiles in $HOME/.config/ as in fig …
 
