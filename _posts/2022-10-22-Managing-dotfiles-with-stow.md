@@ -35,11 +35,13 @@ Stow or GNU Stow is simply a symlink manager. In simple terms, it can be conside
 
 Installations 
 ```apt install stow``` 
+
 ```brew install stow```
 
 ( btw i don't use arch ) 
 
-Usage :
+**How stow works** 
+
 Suppose I have directory structure as : ``` folder1/folder2/folder3/file.py``` 
 ![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/1.png)
 
