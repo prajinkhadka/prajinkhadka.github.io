@@ -23,6 +23,7 @@ I would like to keep track of changes, and commits over time.
 
 
 Here are the dotfiles I have been using. 
+![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/0.png)
 
 
 Lets focus on some important configs such as neovim (nvim ), alacritty, polybar, i3 etc. 
@@ -40,7 +41,7 @@ Installations
 
 Usage :
 Suppose I have directory structure as : ``` folder1/folder2/folder3/file.py``` 
-
+![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/1.png)
 
 Now, let's say I am in ```folder2``` which is the ```stow directory``` from where 
 I will be executing stow. In that case, it will attempt to stow ```folder3```. 
@@ -50,29 +51,35 @@ would be the ```target directory```.
 
 Target directory is always the parent directory, the thing that is going to stow is the 
 child directory from the directory where stow is executed(stow directory) 
-( this is the default behaviour, obviously you can change this ) 
+( this is the default behaviour, obviously you can change this )
+
+![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/IMG_0197.jpg)
+
 
 Running `ls -la`  on target directory(folder1) gives the following output before 
 executing stow.
- 
+
+![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/3.png)
+
 We have no symlinks created as of now.
 
 Now lets move to folder 2 ```cd folder2``, and run ```stow .``` 
+![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/4.png)
 
 We do not see any logs. That is expected.
 
 Now, let's go back to folder1 which is our target directory, and check if there have been any changes. 
 
-``` cd .. && ls -la``` 
+```cd .. && ls -la``` 
+![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/5.png)
 
 Well, now we see we have a new directory which is folder3 which is the symlink of the source directory. It's not copying, it's just pointing to the folder. The changes that you make in any source or target directory will be reflected in both of them. 
 
-To remove the symlink just run ``` stow -D .``` from folder1.
+To remove the symlink just run ```stow -D .``` from folder1.
 
 ### Managing dotfiles 
 
-We have dotfiles in $HOME/.config/ as in fig …
-
+We have dotfiles in ```$HOME/.config/```
 Lets create a folder named my_prettty_awesome_dotfiles in $HOME which will store all of our dotfiles, and would also be a pretty git repository. 
 ```mkdir ~/my_prettty_awesome_dotfiles``` 
 
@@ -86,24 +93,25 @@ To easily symlink between our config which is in $HOME/.config and the source di
 
 ```my_pretty_awesome_dotfiles/alacritty/.config/alacritty/alacritty.yml``` 
 
-Now, from the ``my_pretty_awesome_dotfiles``` I would stow alacritty. 
+Now, from the ```my_pretty_awesome_dotfiles``` I would stow alacritty. 
 
 ```stow alacritty``` 
 
 Before that, lets verify that we do not have alacritty folder in $HOME/.config
-
-
+![]()https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/6.png
 
 It does not exist. 
 
-Now, execute, ``stow alacritty``` from ```$HOME/my_pretty_awesome_dotfiles```, and check if any changes in ```$HOME/.config``` 
+Now, execute, ```stow alacritty``` from ```$HOME/my_pretty_awesome_dotfiles```, 
+and check if any changes in ```$HOME/.config``` 
 
+![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/7.png)
 
 A symlink alacritty is created which points to ```$HOME/my_pretty_awesome_dotfiles/alacritty/.config/alacritty``` which is what we needed. 
 
 If we go to the alacritty symlink we would find the alacritty.yml which is my alacritty config. I got my alacritty config ready. Yehhhhh !!  
 
-
+![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/8.png)
 
 Now, I would do the same for each of my tools. Also, I would initialize the my_pretty_awesome_dotfiles as a git repository and track the history. If unfortunately, if you break something, just pull the previous working commit and stow that. You are good to go. 
 
