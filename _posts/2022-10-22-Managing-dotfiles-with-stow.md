@@ -66,13 +66,15 @@ executing stow.
 We have no symlinks created as of now.
 
 Now lets move to folder 2 ```cd folder2``, and run ```stow .``` 
+
 ![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/4.png)
 
 We do not see any logs. That is expected.
 
 Now, let's go back to folder1 which is our target directory, and check if there have been any changes. 
 
-```cd .. && ls -la``` 
+```cd .. && ls -la```
+
 ![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/5.png)
 
 Well, now we see we have a new directory which is folder3 which is the symlink of the source directory. It's not copying, it's just pointing to the folder. The changes that you make in any source or target directory will be reflected in both of them. 
@@ -82,16 +84,16 @@ To remove the symlink just run ```stow -D .``` from folder1.
 ### Managing dotfiles 
 
 We have dotfiles in ```$HOME/.config/```
-Lets create a folder named my_prettty_awesome_dotfiles in $HOME which will store all of our dotfiles, and would also be a pretty git repository. 
+Lets create a folder named ```my_prettty_awesome_dotfiles``` in ```$HOME``` which will store all of our dotfiles, and would also be a pretty git repository. 
 ```mkdir ~/my_prettty_awesome_dotfiles``` 
 
 For demonstration, let's say I want to manage my alacritty config which is alacritty.yml 
 
-I will create a folder named alacritty in my_prettty_awesome_dotfiles which will contain my alacritty configs. 
+I will create a folder named alacritty in ```my_prettty_awesome_dotfiles``` which will contain my alacritty configs. 
 
 ```mkdir ~/my_prettty_awesome_dotfiles/alacritty```
 
-To easily symlink between our config which is in $HOME/.config and the source directory. We would create a directory structure as : 
+To easily symlink between our config which is in ```$HOME/.config``` and the source directory. We would create a directory structure as : 
 
 ```my_pretty_awesome_dotfiles/alacritty/.config/alacritty/alacritty.yml``` 
 
@@ -99,8 +101,9 @@ Now, from the ```my_pretty_awesome_dotfiles``` I would stow alacritty.
 
 ```stow alacritty``` 
 
-Before that, lets verify that we do not have alacritty folder in $HOME/.config
-![]()https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/6.png
+Before that, lets verify that we do not have alacritty folder in ```$HOME/.config```
+
+![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/6.png)
 
 It does not exist. 
 
@@ -120,7 +123,8 @@ Now, I would do the same for each of my tools. Also, I would initialize the my_p
 
 
 References:
-GNU stow  : https://www.gnu.org/software/stow/manual/stow.html 
-My dotfiles : https://github.com/prajinkhadka/dotfiles__ 
+
+1. [GNU stow](https://www.gnu.org/software/stow/manual/stow.html)
+2. [My dotfiles](https://github.com/prajinkhadka/dotfiles__)
 
 
