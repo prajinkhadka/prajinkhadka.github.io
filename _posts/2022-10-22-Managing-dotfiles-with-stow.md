@@ -65,7 +65,7 @@ executing stow.
 
 We have no symlinks created as of now.
 
-Now lets move to folder 2 ```cd folder2``, and run ```stow .``` 
+Now lets move to folder 2 ```cd folder2```, and run ```stow .``` 
 
 ![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/4.png)
 
