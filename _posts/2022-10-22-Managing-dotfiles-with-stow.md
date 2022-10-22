@@ -118,7 +118,7 @@ If we go to the alacritty symlink we would find the alacritty.yml which is my al
 
 ![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/8.png)
 
-Now, I would do the same for each of my tools. Also, I would initialize the my_pretty_awesome_dotfiles as a git repository and track the history. If unfortunately, if you break something, just pull the previous working commit and stow that. You are good to go. 
+Now, I would do the same for each of my tools. Also, I would initialize the ```my_pretty_awesome_dotfiles``` as a git repository and track the history. If unfortunately, if you break something, just pull the previous working commit and stow that. You are good to go. 
 
 
 
