@@ -1,5 +1,8 @@
 # Managing dotfiles with stow. 
 
+
+![](https://raw.githubusercontent.com/prajinkhadka/prajinkhadka.github.io/master/images/blog3-dotfiles-stow/IMG_0197.jpg)
+
 Managing dotfiles has always been a mess for me. It gets complicated  and messy when I have to set up a completely new machine with my configurations. 
 
 I reckon there are many like me who have a hard time managing, updating dotfiles continuously and without breaking anything.
