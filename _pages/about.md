@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Hi !! I am Prajin, CS Undergrad from Nepal, thriving to be a Good Software Engineer."
+title: "Hi !! I am Prajin."
 excerpt: "About me"
 author_profile: true
 redirect_from: 
