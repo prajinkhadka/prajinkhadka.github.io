@@ -10,6 +10,6 @@ redirect_from:
 
 Working 
 
-[Github](https://github.com/prajinkhadka) where I experiament with things.
+[Github](https://github.com/prajinkhadka) 
 [LinkedIn](https://www.linkedin.com/in/prajin-khadka-75a43a15b/)
 
