@@ -1,6 +1,6 @@
 # Managing dotfiles with stow. 
 
-Managing dotfiles has always been a mess for me. It gets complicated when I have to set up a completely new machine with my configurations. 
+Managing dotfiles has always been a mess for me. It gets complicated  and messy when I have to set up a completely new machine with my configurations. 
 
 I reckon there are many like me who have a hard time managing, updating dotfiles continuously and without breaking anything.
 
@@ -19,7 +19,7 @@ Well, as a programmer, much of the time is spent writing, reviewing code, ( of c
 But what if we have to set up a new PC, should I go over all that config evolution again ? well optimally speaking obviously not. 
 What if I occasionally login to a server and manage some scripts, I would like to have the server behave as close as my local machine with the same config. So, should I first set up the server  first? Well, optimally speaking obviously not. 
 
-I would like to keep track of changes, and commits over time. 
+Also, I would like to keep track of changes of my configuaration, and commits over time. It would help in understanding how shitty I was earlier. 
 
 
 Here are the dotfiles I have been using. 
