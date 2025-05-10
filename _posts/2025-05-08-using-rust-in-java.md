@@ -180,7 +180,7 @@ fn null_string(env: &JNIEnv, msg: &str) -> jstring {
     env.new_string(msg).unwrap_or_default().into_raw()
 }
 ```
-The modules `CStr`, `CString`, and `c_char` help with string conversion between Rust and C.
+`CStr`, `CString`, and `c_char` helps with string conversion between Rust and C.
 
 The function `parse_json` is marked with:
 
