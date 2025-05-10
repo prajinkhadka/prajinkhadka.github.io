@@ -236,14 +236,18 @@ Now, the native compiled library `librust_json_parser.dylib` can then be loaded 
 
 The test JSON file used here is the [twitter.json](https://github.com/serde-rs/json-benchmark/blob/master/data/twitter.json) 
 from the JSON benchmark repository, duplicated over 1000 times to reach a file size of approximately 561MB. When parsing this file 
-with Jackson in Java, it takes around 9000ms, with the JVM heap memory explicitly set to 4GB using -Xmx4g.
+with Jackson in Java, it takes around 9000ms, with the JVM heap memory explicitly set to 4GB using `-Xmx4g`.
 
-The Java + Rust JNI integration shown above brings that down to around 6000ms, which is a noticeable improvement. That said, 
-the Rust code here does not return the parsed JSON to Java — it simply parses and returns a placeholder string ("parsed"). 
+The Java + Rust JNI integration shown above brings that down to around 6000ms, which is a 
+noticeable improvement. That said, 
+the Rust code here does not return the parsed JSON to Java — it simply parses 
+and returns a placeholder string ("parsed"). 
 This omission avoids serialization and JNI overhead, and is not reflective of a full end-to-end use case. 
-Returning large data structures from Rust to Java would require additional complexity and may reduce the observed performance gain.
+Returning large data structures from Rust to Java would require additional complexity 
+and may reduce the observed performance gain.
 
-Lastly, this post is not meant to be a benchmark authority — instead, it's focused on demonstrating how to call Rust code from 
+Lastly, this post is not meant to be a benchmark authority — instead, 
+it's focused on demonstrating how to call Rust code from 
 Java using JNI, particularly for performance-critical components.
 
 All the code that I have used are hosted here: [Rust-In-Java](https://github.com/prajinkhadka/using-rust-java)
