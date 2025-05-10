@@ -87,8 +87,8 @@ I faced a similar challenge in a JVM-based project.
 By using JNI (Java Native Interface), I integrated a Rust-based parser directly into the Java system with minimal overhead.
 
 In this blog, I'll walk you through how to tap into Rust's power using JNI — with a focus on comparing JSON 
-parsing performance using Jackson vs. simd-json. Json parsing may not be the best use case of these kind of optimizations 
-this specific example(Json Parser) is just used to show the usage of JNI.
+parsing performance using `Jackson` vs. `simd-json`. Json parsing may not be the best use case of these kind of optimization.
+This specific example(Json Parser) is just used here to show the usage of JNI.
 
 
 ## World of JVM
