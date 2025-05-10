@@ -96,7 +96,7 @@ let's quickly discss about the JVM (Java Virtual Machine) just to understand why
 Java runs on the JVM, which is a brilliant piece of engineering.
 It provides portability, memory safety, great tooling, and the "write once, run anywhere" capability.
 
-That's why Java is so heavily used in enterprise applications — and it serves that purpose well.
+That's why Java is so heavily used in enterprise applications — and it serves well.
 
 But the JVM is not magic. It has trade-offs. One of them is memory management, handled via the Garbage Collector (GC).
 This is convenient for programmers — we don't have to worry about memory leaks or manual deallocation — 
