@@ -21,7 +21,7 @@ What if we could **bring Rust's speed** into our JVM application without rewriti
 Let's run a simple benchmarking application to parse JSON using Jackson in Java and 
 compare it with simd-json in Rust to see if Rust performs better or worse.
 
-## 🟡 Java Benchmark (Jackson)
+## Java Benchmark (Jackson)
 
 ```java
 import com.fasterxml.jackson.databind.JsonNode;
@@ -45,7 +45,7 @@ public class JacksonBenchmark {
 }
 ```
 
-## 🔵 Rust Benchmark (simd-json)
+## Rust Benchmark (simd-json)
 
 ```rust
 use simd_json::OwnedValue;
@@ -63,7 +63,7 @@ fn main() {
 }
 ```
 
-## ⚡ Results:
+## Results:
 
 ```
 simd-json parse time: 898.583 µs
@@ -255,11 +255,3 @@ cargo build --release --target x86_64-apple-darwin
 ```
 
 The native compiled library `librust_json_parser.dylib` can then be loaded into the Java application.
-
-## Summary
-
-- Jackson is great for most use cases but starts to struggle with large real-time JSON parsing workloads.
-- Rust + simd-json can give massive performance improvements.
-- With JNI, we can get the best of both worlds: Java ecosystem + Rust speed.
-- JNI is low-level and requires caution — but it's a powerful tool when performance truly matters.
-
