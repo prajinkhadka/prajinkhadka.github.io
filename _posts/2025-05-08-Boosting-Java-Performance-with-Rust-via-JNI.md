@@ -197,7 +197,6 @@ public class RustJsonParser {
     static {
         System.load("/absolute/path/to/librust_json_parser.dylib");
     }
-
     public static native String parseJson(String path);
 }
 ```
@@ -216,12 +215,9 @@ public class Main {
     public static void main(String[] args) {
         String filePath = "../test_inputs/twitter_large.json";
         long start = System.nanoTime();
-
         String result = RustJsonParser.parseJson(filePath);
-
         long end = System.nanoTime();
         long totalTime = end - start;
-
         System.out.println("\nResult: " + result);
         System.out.printf("Total time: %.2f ms\n", totalTime / 1_000_000.0);
     }
