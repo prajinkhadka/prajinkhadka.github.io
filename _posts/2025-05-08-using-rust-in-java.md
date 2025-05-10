@@ -189,14 +189,14 @@ fn null_string(env: &JNIEnv, msg: &str) -> jstring {
     env.new_string(msg).unwrap_or_default().into_raw()
 }
 ```
+The modules `CStr`, `CString`, and `c_char` help with string conversion between Rust and C.
 
-The modules CStr, CString, and c_char help with string conversion between Rust and C.
-The function parse_json is marked with:
+The function `parse_json` is marked with:
 
 - `#[no_mangle]` to avoid name mangling
 - `extern "system"` to use the C calling convention so JNI can call it safely
 
-### 📝 Naming Convention Note:
+### Naming Convention Note:
 If the Java class is named RustJsonParser and it declares a method `native String parseJson(String json);`,
 then the Rust function must be named:
 
@@ -204,7 +204,7 @@ then the Rust function must be named:
 
 This naming rule is how JNI binds native functions to Java methods at runtime.
 
-## ☕ Java Class: RustJsonParser.java
+## Java Class: RustJsonParser.java
 
 This class bridges the JVM to native Rust code.
 It loads the compiled shared library (.dylib, .so, or .dll) using System.load(...) and declares the native method.
@@ -221,7 +221,7 @@ public class RustJsonParser {
 
 This class does not contain any benchmarking logic — it only provides a thin JNI wrapper around the Rust library.
 
-## 🚀 Java Benchmark App: Main.java
+## Java Benchmark App: Main.java
 
 This class contains the actual logic to load the JSON file and pass the file path to the Rust parser.
 
@@ -244,9 +244,9 @@ public class Main {
 }
 ```
 
-## 🧱 Build Rust for JVM Compatibility
+##  Build Rust for JVM Compatibility
 
-Since I'm on a Mac M1, I compiled Rust for x86_64-apple-darwin (important for JVM compatibility):
+Since I'm on a Mac M1, I compiled Rust for `x86_64-apple-darwin` (important for JVM compatibility):
 
 ```bash
 cd rust_json_parser
@@ -254,12 +254,12 @@ rustup target add x86_64-apple-darwin
 cargo build --release --target x86_64-apple-darwin
 ```
 
-The native compiled library librust_json_parser.dylib can then be loaded into the Java application.
+The native compiled library `librust_json_parser.dylib` can then be loaded into the Java application.
 
-## ✅ Summary
+## Summary
 
 - Jackson is great for most use cases but starts to struggle with large real-time JSON parsing workloads.
 - Rust + simd-json can give massive performance improvements.
-- With JNI, you can get the best of both worlds: Java ecosystem + Rust speed.
+- With JNI, we can get the best of both worlds: Java ecosystem + Rust speed.
 - JNI is low-level and requires caution — but it's a powerful tool when performance truly matters.
 
