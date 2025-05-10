@@ -241,7 +241,7 @@ rustup target add x86_64-apple-darwin
 cargo build --release --target x86_64-apple-darwin
 ```
 
-The native compiled library `librust_json_parser.dylib` can then be loaded into the Java application.
+Now, the native compiled library `librust_json_parser.dylib` can then be loaded into the Java application.
 
 The test JSON file used here is the [twitter.json](https://github.com/serde-rs/json-benchmark/blob/master/data/twitter.json) 
 from the JSON benchmark repository, duplicated over 1000 times to reach a file size of approximately 561MB. When parsing this file 
