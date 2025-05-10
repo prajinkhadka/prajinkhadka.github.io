@@ -258,7 +258,7 @@ Returning large data structures from Rust to Java would require additional compl
 Lastly, this post is not meant to be a benchmark authority — instead, it's focused on demonstrating how to call Rust code from 
 Java using JNI, particularly for performance-critical components.
 
-All the code that I have used are hosted here: [](https)
+All the code that I have used are hosted here: [Rust-In-Java](https://github.com/prajinkhadka/using-rust-java)
 
 Notes:
 * Latest version of Java do support SIMD through a Vector API from Java 16, and is a 
