@@ -186,7 +186,7 @@ then the Rust function must be named:
 
 This naming rule is how JNI binds native functions to Java methods at runtime.
 
-## Java Class: RustJsonParser.java
+## RustJsonParser.java
 
 This class bridges the JVM to native Rust code.
 It loads the compiled shared library (.dylib, .so, or .dll) using `System.load(...)` and declares the 
@@ -205,7 +205,7 @@ public class RustJsonParser {
 This class does not contain any benchmarking logic — it only provides a thin JNI 
 wrapper around the Rust library.
 
-## Java Benchmark App: Main.java
+## Main.java
 
 This class contains the actual logic to load the JSON file and pass the file path to the Rust parser.
 
