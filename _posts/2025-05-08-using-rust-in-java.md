@@ -13,7 +13,7 @@ However, Jackson starts to feel sluggish when dealing with large JSON files.
 Obviously, we can optimize the Java code, tweak the JVM flags, 
 increase heap memory, etc., but we may still not be able to break the performance ceiling.
 
-On the other side of the spectrum, there's **Rust** — 
+On the other there's **Rust** — 
 a systems language that is fast and offers fine-grained control.
 
 What if we could **bring Rust's speed** into our JVM application without rewriting everything?
