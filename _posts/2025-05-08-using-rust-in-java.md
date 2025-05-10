@@ -19,7 +19,7 @@ What if we could **bring Rust's speed** into our JVM application without rewriti
 Let's run a simple benchmarking application to parse JSON using Jackson in Java and 
 compare it with `simd-json` in Rust to see if Rust performs better or worse.
 
-## Java Benchmark (Jackson)
+## Java Benchmark
 
 ```java
 import com.fasterxml.jackson.databind.JsonNode;
@@ -43,7 +43,7 @@ public class JacksonBenchmark {
 }
 ```
 
-## Rust Benchmark (simd-json)
+## Rust Benchmark
 
 ```rust
 use simd_json::OwnedValue;
@@ -65,7 +65,6 @@ fn main() {
 
 ```
 simd-json parse time: 898.583 µs
-
 Jackson parse time: 123 ms
 ```
 
@@ -260,4 +259,9 @@ Lastly, this post is not meant to be a benchmark authority — instead, it's foc
 Java using JNI, particularly for performance-critical components.
 
 All the code that I have used are hosted here: [](https)
+
+Notes:
+* Latest version of Java do support SIMD through a Vector API from Java 16, and is a 
+standard feature through Java 17.
+* [SIMDjson-Java](https://github.com/simdjson/simdjson-java) 
 
