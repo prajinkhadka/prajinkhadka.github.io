@@ -1,24 +1,28 @@
-# Using Rust in Java
+Java is fast, and for most use cases, the performance is more than enough — especially considering how mature the JVM is, 
+the ecosystem around it, and how well it integrates into enterprise systems. But every now and then, 
+especially when dealing with **massive datasets**, the "fast enough" of the JVM is not enough — particularly in real-time data 
+analytics systems.
 
-Java is fast, and for most use cases the performance is more than enough especially  
-considering how mature JVM is, the ecosystem, and how it integrates is enterprise systems. 
-But every now and then especially dealing with massive large dataset, the fast enough of 
-JVM is not enough espeically in real-time data analytics systems. 
+Imagine building a high-throughput, real-time application that needs to parse **huge JSON payloads every second**.  
+[Jackson](https://github.com/FasterXML/jackson) is the go-to library in Java, 
+and even [Apache Spark uses Jackson for parsing JSON](https://github.com/apache/spark/blob/master/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/json/JacksonParser.scala).  
+However, Jackson starts to feel sluggish when dealing with large JSON files.
 
-Imagine building a high throughput real-time application that needs  to parse huge json payload every second. 
-Jackon -> is the go to library in Java, this starts to feel sluggist. Even Apache Sparj uses Jackon for parsing json. [REFERNCES]. 
-We can optimiuze the java code, tweak the JVM flags, increase the heap memroy etc  but still we 
-may not be able to break the performance ceiling.
+Obviously, we can optimize the Java code, 
+tweak the JVM flags, increase heap memory, etc., 
+but we may still not be able to break the performance ceiling.
 
-Lets run a benchmarking application to parse json using Jackson. 
-
-<< CODE >> and << RESULT >> 
-
-But on the other side of spectrum there  is Rust, a system langage that is fast, and fine grained control. 
-What if we can bring the speed of rust into our JVM application  without rewriting everyting ? 
+--- 
+On the other side of the spectrum, there's **Rust** — a systems language that is fast and offers fine-grained control. 
+What if we could **bring Rust's speed** into our JVM application without rewriting everything?
+Let’s run a simple benchmarking application to parse JSON using **Jackson** in Java and compare it with **simd-json** in Rust to see if Rust performs better or worse.
+--- 
 
 
-Lets run a benchmarking applicaiton to parse JSON using Jackson and compare with Rust simd-json. 
+But on the other side of spectrum there is Rust, a system langage that is fast, and provides fine grained control. 
+What if we can bring the speed of rust into our JVM application without rewriting everything ? 
+
+Lets run a benchmarking applicaiton to parse JSON using Jackson and compare with Rust simd-json if rust performs better or worse.
 
 ```
 import com.fasterxml.jackson.databind.JsonNode;
@@ -62,13 +66,13 @@ fn main(){
 ```
 
 Results: 
-Results:
+-> simd-json parse time: 898.583 µs
+-> Jackson parse time: 123 ms
 
-simd-json parse time: 898.583 µs
-Jackson parse time: 123 ms
+simd-json is ~137x faster than Jackson in this benchmark. 
 
-Result: simd-json is ~137x faster than Jackson in this benchmark. 
-This blog is not about benchmarking so there might be other ways to incresae the performance on Java,and also I am using older version of java ( java 8), not JVM tweaks, code optimization.  
+This blog is not about benchmarking so there might be other ways to incresae the performance on Java,  and also 
+I am using older version of java ( java 8), no JVM tweaks, code optimization.  [Italic]
 
 This performacne boost is not magic. Rust simd-json leverages SIMD(Single Instruction - Multiple Data)
 and zero-copy parsing at the lower level than what Java libraires like Jackson does becuase of JVM limitations 
