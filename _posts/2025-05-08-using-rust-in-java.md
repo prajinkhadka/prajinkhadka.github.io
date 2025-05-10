@@ -99,14 +99,10 @@ It provides portability, memory safety, great tooling, and the "write once, run 
 
 That's why Java is so heavily used in enterprise applications — and it serves that purpose well.
 
-But the JVM is not magic. It has trade-offs.
-
-One of them is memory management, handled via the Garbage Collector (GC).
+But the JVM is not magic. It has trade-offs. One of them is memory management, handled via the Garbage Collector (GC).
 This is convenient for programmers — we don't have to worry about memory leaks or manual deallocation — 
-but it also means we do not have full control.
-
-SIMD (Single Instruction, Multiple Data) allows CPUs to do highly parallel processing on chunks of data — 
-like vector math used in deep learning.
+but it also means we do not have full control. SIMD (Single Instruction, Multiple Data) allows CPUs to do highly parallel 
+processing on chunks of data — like vector math used in deep learning.
 
 Rust and C++ leverage SIMD effectively. JVM? Not so much.
 It abstracts away lower-level control.
@@ -117,11 +113,9 @@ There are tons of great resources on these topics to explore further.
 ## JNI (Java Native Interface)
 
 If you've never worked with JNI — don't worry, you might never need it.
-But it's good to know it exists and understand what it does.
-
-JNI is a way for Java code to call (or be called by) native applications or libraries written in languages like C, C++, or Rust.
-
-With JNI, we can escape the JVM sandbox and run code that can use system-level features to squeeze out raw performance — if needed.
+But it's good to know it exists and understand what it does. JNI is a way for Java code to call (or be called by) 
+native applications or libraries written in languages like C, C++, or Rust. With JNI, we can escape the JVM sandbox and 
+run code that can use system-level features to squeeze out raw performance — if needed.
 
 At a high level, JNI works like this:
 
@@ -133,7 +127,7 @@ At a high level, JNI works like this:
 While powerful, this comes with responsibility.
 Since it's quite low-level, we have to manage memory carefully and be explicit about what kind of data we pass across the boundary.
 
-I'm not an expert in this topic, but feel free to explore more if this interests you.
+*I'm not an expert in this topic, but feel free to explore more if this interests you.
 
 ## Example: Porting a Rust JSON Parser to Java
 
