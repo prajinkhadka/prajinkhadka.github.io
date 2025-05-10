@@ -32,11 +32,9 @@ public class JacksonBenchmark {
     public static void main(String[] args) throws Exception {
         byte[] jsonData = Files.readAllBytes(Paths.get("twitter_large.json"));
         ObjectMapper mapper = new ObjectMapper();
-
         long startTime = System.nanoTime();
         JsonNode rootNode = mapper.readTree(jsonData);
         long endTime = System.nanoTime();
-
         System.out.println("Jackson parse time: " + (endTime - startTime) / 1_000_000 + " ms");
         System.out.println("Parsed JSON root node: " + rootNode.getNodeType());
     }
@@ -51,7 +49,7 @@ use std::fs;
 use std::time::Instant;
 
 fn main() {
-    let data = fs::read("/Users/prajin/Downloads/blogs/codee/twitter_large.json").expect("Failed to load JSON");
+    let data = fs::read("twitter_large.json").expect("Failed to load JSON");
     let mut json_data = data.clone();
     let start = Instant::now();
     let _parsed: OwnedValue = simd_json::to_owned_value(&mut json_data).expect("Failed to parse");
