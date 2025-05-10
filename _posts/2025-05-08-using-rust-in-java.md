@@ -1,5 +1,3 @@
-# Using Rust in Java
-
 Java is fast, and for most use cases, the performance is more than enough — 
 especially considering how mature the JVM is, the ecosystem around it, and how well it integrates into enterprise systems.
 But every now and then, especially when dealing with **massive datasets**, 
