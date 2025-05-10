@@ -17,7 +17,7 @@ a systems language that is fast and offers fine-grained control.
 What if we could **bring Rust's speed** into our JVM application without rewriting everything?
 
 Let's run a simple benchmarking application to parse JSON using Jackson in Java and 
-compare it with simd-json in Rust to see if Rust performs better or worse.
+compare it with `simd-json` in Rust to see if Rust performs better or worse.
 
 ## Java Benchmark (Jackson)
 
@@ -69,7 +69,7 @@ simd-json parse time: 898.583 µs
 Jackson parse time: 123 ms
 ```
 
-simd-json is ~137x faster than Jackson in this benchmark.
+`simd-json` is ~137x faster than `Jackson` in this benchmark.
 
 *This blog is not about benchmarking, so there might be other ways to improve Java's performance. 
 I'm also using an older version of Java (Java 8), with no JVM tweaks or code optimization.*
