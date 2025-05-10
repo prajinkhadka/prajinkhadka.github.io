@@ -77,10 +77,9 @@ simd-json is ~137x faster than Jackson in this benchmark.
 I'm also using an older version of Java (Java 8), with no JVM tweaks or code optimization.*
 
 This performance boost isn't magic.
-simd-json in Rust leverages SIMD (Single Instruction, Multiple Data) and zero-copy parsing at 
-a lower level than what Java libraries like Jackson can achieve — primarily because of JVM limitations like garbage collection, 
+`simd-json` in Rust leverages SIMD (Single Instruction, Multiple Data) and zero-copy parsing at 
+a lower level than what Java libraries like `Jackson` can achieve — primarily because of JVM limitations like garbage collection, 
 memory instruction abstraction, and lack of direct SIMD usage.
-
 
 **Can we bring Rust's performance to our Java application without rewriting everything?**
 
