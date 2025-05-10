@@ -59,8 +59,6 @@ fn main() {
 }
 ```
 
-## Results:
-
 ```
 simd-json parse time: 898.583 µs
 Jackson parse time: 123 ms
