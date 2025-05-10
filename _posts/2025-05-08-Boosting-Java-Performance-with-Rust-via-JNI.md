@@ -226,7 +226,7 @@ public class Main {
 
 ##  Build Rust for JVM Compatibility
 
-Since I'm on a Mac M1, I compiled Rust for `x86_64-apple-darwin` (important for JVM compatibility):
+Since I'm on a Mac M1, I compiled Rust for `x86_64-apple-darwin`
 
 ```
 cargo build --release --target x86_64-apple-darwin 
