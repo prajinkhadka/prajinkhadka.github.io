@@ -89,12 +89,13 @@ By using JNI (Java Native Interface), I integrated a Rust-based parser directly 
 
 In this blog, I'll walk you through how to tap into Rust's power using JNI — with a focus on comparing JSON 
 parsing performance using Jackson vs. simd-json. Json parsing may not be the best use case of these kind of optimizations 
-this specific problem statement is just used to show the usage of JNI.
+this specific example(Json Parser) is just used to show the usage of JNI.
 
 
 ## World of JVM
 
-Before jumping into JNI and Rust, let's quickly talk about the JVM (Java Virtual Machine) just to understand why it sometimes hits a wall.
+Before jumping into JNI and Rust, 
+let's quickly discss about the JVM (Java Virtual Machine) just to understand why it sometimes hits a wall.
 
 Java runs on the JVM, which is a brilliant piece of engineering.
 It provides portability, memory safety, great tooling, and the "write once, run anywhere" capability.
@@ -104,16 +105,19 @@ That's why Java is so heavily used in enterprise applications — and it serves 
 But the JVM is not magic. It has trade-offs.
 
 One of them is memory management, handled via the Garbage Collector (GC).
-This is convenient for programmers — we don't have to worry about memory leaks or manual deallocation — but it also means we do not have full control.
+This is convenient for programmers — we don't have to worry about memory leaks or manual deallocation — 
+but it also means we do not have full control.
 
-SIMD (Single Instruction, Multiple Data) allows CPUs to do highly parallel processing on chunks of data — like vector math used in deep learning.
+SIMD (Single Instruction, Multiple Data) allows CPUs to do highly parallel processing on chunks of data — 
+like vector math used in deep learning.
+
 Rust and C++ leverage SIMD effectively. JVM? Not so much.
 It abstracts away lower-level control.
 That said, newer versions of Java support SIMD through the Vector API.
 
 There are tons of great resources on these topics to explore further.
 
-## 🔗 JNI (Java Native Interface)
+## JNI (Java Native Interface)
 
 If you've never worked with JNI — don't worry, you might never need it.
 But it's good to know it exists and understand what it does.
@@ -134,7 +138,7 @@ Since it's quite low-level, we have to manage memory carefully and be explicit a
 
 I'm not an expert in this topic, but feel free to explore more if this interests you.
 
-## 🧪 Example: Porting a Rust JSON Parser to Java
+## Example: Porting a Rust JSON Parser to Java
 
 Let's look at how we integrate Rust with Java using JNI.
 
@@ -144,7 +148,7 @@ The basic structure is:
 2. Rust reads the file, parses the JSON, and returns a result string
 3. JNI serves as the bridge between them
 
-## 🦀 Rust Code
+##  Rust Code
 
 ```rust
 use std::fs;
