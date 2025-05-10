@@ -127,12 +127,10 @@ _I'm not an expert in this topic, but feel free to explore more if this interest
 
 ## Example: Porting a Rust JSON Parser to Java
 
-Let's look at how we integrate Rust with Java using JNI.
-
 The basic structure is:
 
-1. Java calls the native method parseJson(String path)
-2. Rust reads the file, parses the JSON, and returns a result string
+1. Java calls the native method `parseJson(String path)`
+2. Rust reads the json file, parses the JSON, and returns.
 3. JNI serves as the bridge between them
 
 ##  Rust Code
