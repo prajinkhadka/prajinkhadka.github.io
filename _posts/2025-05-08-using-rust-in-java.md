@@ -1,7 +1,7 @@
 Java is fast, and for most use cases, the performance is more than enough — 
 especially considering how mature the JVM is, the ecosystem around it, and how well it integrates into enterprise systems.
 But every now and then, especially when dealing with **massive datasets**, 
-the "fast enough" of the JVM is not enough — particularly in real-time data analytics systems.
+the "fast enough" of the JVM is not enough — particularly in real applications.
 
 Imagine building a high-throughput, real-time application that needs to parse **huge JSON payloads every second**.
 [Jackson](https://github.com/FasterXML/jackson) is the go-to library in Java, 

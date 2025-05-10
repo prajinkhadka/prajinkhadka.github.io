@@ -17,7 +17,7 @@ Work experience
 ======
 * Machine Learning Engineer, Fusemachines, 2019 - 2021
 * Senior AI Engineer, Dogma Group, 2022 - 2023
-* Google Summer Of Code, 2014
+* Google Summer Of Code, 2024
 * Graduate Research Assistant, MC2 Lab, 2024 - Present
 
 Skills
