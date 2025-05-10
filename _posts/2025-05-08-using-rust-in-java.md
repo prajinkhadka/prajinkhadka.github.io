@@ -176,7 +176,7 @@ fn null_string(env: &JNIEnv, msg: &str) -> jstring {
 ```
 `CStr`, `CString`, and `c_char` helps with string conversion between Rust and C.
 
-The function `parse_json` is marked with:
+The function `Java_RustJsonParser_parseJson` is marked with:
 
 - `#[no_mangle]` to avoid name mangling
 - `extern "system"` to use the C calling convention so JNI can call it safely
