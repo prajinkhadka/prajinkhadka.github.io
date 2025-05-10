@@ -179,7 +179,6 @@ The function `Java_RustJsonParser_parseJson` is marked with:
 - `#[no_mangle]` to avoid name mangling
 - `extern "system"` to use the C calling convention so JNI can call it safely
 
-### Naming Convention Note:
 If the Java class is named `RustJsonParser` and it declares a method `native String parseJson(String json);`,
 then the Rust function must be named:
 
