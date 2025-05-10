@@ -11,21 +11,22 @@ redirect_from:
 
 Education
 ======
-* Bachelor of Computer Science and Technology,  2018
+* Masters in Computer Science, [University of Nebraska Omaha]
 
 Work experience
 ======
-* Machine Learning Engineer, Fusemachines, 2019
+* Machine Learning Engineer, Fusemachines, 2019 - 2021
+* Senior AI Engineer, Dogma Group, 2022 - 2023
+* Google Summer Of Code, 2014
+* Graduate Research Assistant, MC2 Lab, 2024 - Present
 
 Skills
 ======
-* Python, Java
-* Machine Learning, Scikit-learn, Scipy, OpenCv
-* Pandas, Numpy, Matplotlib
-* Flask, Pytorch, JIRA, CI/CD Pipeline ), Flask , FastAPI
-* Deep Learning, Tensorflow/Keras, Pytorch
-* Git, Docker, Kubernetes, CI/CD with Github Action
-* Familiar With: C, C++, SQL, MongoDB, LaTeX, Azure, AWS Services, Elastic Search
+* Programming Languages: Python, R, C++, SQL, Java, Scala
+* Machine Learning / Deep Learning: Transformer Models, LLMs (GPT, BERT), Graph Neural Networks (GNNs), Time-Series Forecasting
+* Frameworks & Tools: PyTorch, TensorFlow, OpenCV, Hugging Face, LangChain, MLflow, FastAPI, Apache Airflow
+* Data Processing: Apache Spark, Hadoop, Dask, Pandas, NumPy, Power BI
+* Database & Deployment: AWS, GCP, Azure, MySQL, MongoDB, Redis, Docker, Faiss
 
 Publications
 ======
