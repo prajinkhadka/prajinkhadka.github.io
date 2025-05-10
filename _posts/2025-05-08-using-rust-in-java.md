@@ -115,7 +115,7 @@ run code that can use system-level features to squeeze out raw performance — i
 
 At a high level, JNI works like this:
 
-1. Declare a native method in your Java class.
+1. Declare a native method in the Java class.
 2. Write the implementation of that method in a native language (C, C++, Rust).
 3. Use System.loadLibrary() to load the compiled native code.
 4. Let the JVM pass data between Java and native code during runtime.
@@ -123,7 +123,7 @@ At a high level, JNI works like this:
 While powerful, this comes with responsibility.
 Since it's quite low-level, we have to manage memory carefully and be explicit about what kind of data we pass across the boundary.
 
-*I'm not an expert in this topic, but feel free to explore more if this interests you.
+_I'm not an expert in this topic, but feel free to explore more if this interests you.
 
 ## Example: Porting a Rust JSON Parser to Java
 
