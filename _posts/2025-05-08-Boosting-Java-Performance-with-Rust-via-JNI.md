@@ -123,7 +123,7 @@ At a high level, JNI works like this:
 While powerful, this comes with responsibility.
 Since it's quite low-level, we have to manage memory carefully and be explicit about what kind of data we pass across the boundary.
 
-## Example: Porting a Rust JSON Parser to Java
+## Porting a Rust JSON Parser to Java via JNI
 
 The basic structure is:
 
