@@ -228,10 +228,8 @@ public class Main {
 
 Since I'm on a Mac M1, I compiled Rust for `x86_64-apple-darwin` (important for JVM compatibility):
 
-```bash
-cd rust_json_parser
-rustup target add x86_64-apple-darwin
-cargo build --release --target x86_64-apple-darwin
+```
+cargo build --release --target x86_64-apple-darwin 
 ```
 
 Now, the native compiled library `librust_json_parser.dylib` can then be loaded into the Java application.
