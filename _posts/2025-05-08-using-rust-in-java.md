@@ -1,30 +1,29 @@
-Java is fast, and for most use cases, the performance is more than enough — especially considering how mature the JVM is, 
-the ecosystem around it, and how well it integrates into enterprise systems. But every now and then, 
-especially when dealing with **massive datasets**, the "fast enough" of the JVM is not enough — particularly in real-time data 
-analytics systems.
+# Using Rust in Java
 
-Imagine building a high-throughput, real-time application that needs to parse **huge JSON payloads every second**.  
+Java is fast, and for most use cases, the performance is more than enough — 
+especially considering how mature the JVM is, the ecosystem around it, and how well it integrates into enterprise systems.
+But every now and then, especially when dealing with **massive datasets**, 
+the "fast enough" of the JVM is not enough — particularly in real-time data analytics systems.
+
+Imagine building a high-throughput, real-time application that needs to parse **huge JSON payloads every second**.
 [Jackson](https://github.com/FasterXML/jackson) is the go-to library in Java, 
-and even [Apache Spark uses Jackson for parsing JSON](https://github.com/apache/spark/blob/master/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/json/JacksonParser.scala).  
+and even [Apache Spark uses Jackson for parsing JSON](https://github.com/apache/spark/blob/master/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/json/JacksonParser.scala).
 However, Jackson starts to feel sluggish when dealing with large JSON files.
 
-Obviously, we can optimize the Java code, 
-tweak the JVM flags, increase heap memory, etc., 
-but we may still not be able to break the performance ceiling.
+Obviously, we can optimize the Java code, tweak the JVM flags, 
+increase heap memory, etc., but we may still not be able to break the performance ceiling.
 
---- 
-On the other side of the spectrum, there's **Rust** — a systems language that is fast and offers fine-grained control. 
+On the other side of the spectrum, there's **Rust** — 
+a systems language that is fast and offers fine-grained control.
+
 What if we could **bring Rust's speed** into our JVM application without rewriting everything?
-Let’s run a simple benchmarking application to parse JSON using **Jackson** in Java and compare it with **simd-json** in Rust to see if Rust performs better or worse.
---- 
 
+Let's run a simple benchmarking application to parse JSON using Jackson in Java and 
+compare it with simd-json in Rust to see if Rust performs better or worse.
 
-But on the other side of spectrum there is Rust, a system langage that is fast, and provides fine grained control. 
-What if we can bring the speed of rust into our JVM application without rewriting everything ? 
+## 🟡 Java Benchmark (Jackson)
 
-Lets run a benchmarking applicaiton to parse JSON using Jackson and compare with Rust simd-json if rust performs better or worse.
-
-```
+```java
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -44,97 +43,110 @@ public class JacksonBenchmark {
         System.out.println("Parsed JSON root node: " + rootNode.getNodeType());
     }
 }
-
-``` 
-
 ```
+
+## 🔵 Rust Benchmark (simd-json)
+
+```rust
 use simd_json::OwnedValue;
 use std::fs;
 use std::time::Instant;
 
-fn main(){
-    let data = fs::read("/Users/prajin/Downloads/blogs/codee/twitter_large.json").expect("Failed to load json");
+fn main() {
+    let data = fs::read("/Users/prajin/Downloads/blogs/codee/twitter_large.json").expect("Failed to load JSON");
     let mut json_data = data.clone();
     let start = Instant::now();
     let _parsed: OwnedValue = simd_json::to_owned_value(&mut json_data).expect("Failed to parse");
     let duration = start.elapsed();
 
-    println!("Simd JSON parse time {:?}",duration );
-
-
+    println!("Simd JSON parse time {:?}", duration);
 }
 ```
 
-Results: 
--> simd-json parse time: 898.583 µs
--> Jackson parse time: 123 ms
-
-simd-json is ~137x faster than Jackson in this benchmark. 
-
-This blog is not about benchmarking so there might be other ways to incresae the performance on Java,  and also 
-I am using older version of java ( java 8), no JVM tweaks, code optimization.  [Italic]
-
-This performacne boost is not magic. Rust simd-json leverages SIMD(Single Instruction - Multiple Data)
-and zero-copy parsing at the lower level than what Java libraires like Jackson does becuase of JVM limitations 
-like garbage collector, memory instrucitons, and lack of direct SIMD usage. 
-
-### Can we bring this performacne of Rust our Java Applciation without rewriting weverytinh?
-I faced a similar challenge in a JVM-based project. By using JNI (Java Native Interface). 
-I integrated a Rust-based parser directly into the Java system with minimal overhead. 
-In this blog, I’ll walk you through how to tap into Rust's power using JNI — with a focus on comparing JSON parsing performance using Jackson vs. simd-json.
-
-Whether you're performance-obsessed, building real-time pipelines, 
-or just curious to learn something new, 
-this post might offer a valuable perspective. 
-
-### World of JVM 
-
-Before jumping into JNI, and rust. Lets quickly talk bout JVM ( Java Virtual Machine) just to understnad why soimetiem JVM hits a wall. 
-Java runs on JVM which is brilliant engineering. It gives portabilioty, mermory sfetly, lots of tooling, write once - run anywhere. 
-Thaty is why Java is such heavily used in enterprise applciations, and it serves the purpose. 
-But JVM is not magic. It has some trade offs. One of them is memory management which is handled through garbage collector. 
-This is conveneint for programmers, we do not have to worry about memory leesk, or manually deallocatio mermoy but it also ments  we do not 
-have control the full control. 
-SIMD - SIngle isntrcution Multiple data allows CPU's to do hiughly parallel processing o nchunks of data. 
-Like vector match used in Deep learnign. Rust and C++ heavily use SIMD and take full advantage of this. But JVM not so much 
-It abstract lowwer level control. But new versions of Java does summport SIMD through vector API [ References]. 
-
-Ther are tons of great resouces on  these topics to explore. 
-
-## JNI (Java Native Interface)
-If you ahve never workd wioth JNI, dont worry you might not work ever as you  might  not need it ever. But it is good to 
-have basic idea that it exsits and what it is. 
-
-JNI is a way for  java code or call (or to be called) by native applicatiosn or libraries wirrtgie in langaues liek C, C++, RUst. 
-With this we can escale the JVM sandbox environment and run code that can use system level features to squeueze our raw perfdoramcne IF NEEDED. 
-
-At a very high level this is how JNI works:
-1. We decralse na native method in Java class. 
-2. We rite the implementation of tht native method in an ative langauielike (C, C++,  JRist)
-3. Using System.loadLibrary()  we lload the complied native code. 
-4. Let JVM pas data between Jva and native coe drugn runtime.  
-
-While this is pwoerful, power comes wth responsibilty. Sicne  it is quite low lvel we havew to amngbe mameroy, carefully,  abd be very 
-explicit on wht kind ofdata to pass acorss boundary. 
-
-I am No export inthis topic but feel free to explore more on thistopic if this  is intering to you. 
-
-In our case , we will use JNI to call JSON parsing function written n rust directly from Java. 
-We wont go through erach  and every deetail but as we go alogn through the integration. I will  try ot explain how to intergtate.  
-
-We wont dive deep into how simd-json works in rust. In short, it is a json parser writtn in rust that uses 
-lowlevel SIMD to process bytes in parallel which makes it extremely fast. If youare curou please head over to the 
-official inmplemantion and ssimds json paper. 
-
-## Portign rust json parsr to java 
-
-Lets see an example how are we integrating rust with Java using JNI. The basic strcutuir would be: 
-1. Java calls the native method "parseJson(String path)"
-2. Rust read the file , parses the json, and returns. 
-3. JNI serves as the bridge between them
-
+## ⚡ Results:
 
 ```
+simd-json parse time: 898.583 µs
+
+Jackson parse time: 123 ms
+```
+
+simd-json is ~137x faster than Jackson in this benchmark.
+
+*This blog is not about benchmarking, so there might be other ways to improve Java's performance. 
+I'm also using an older version of Java (Java 8), with no JVM tweaks or code optimization.*
+
+This performance boost isn't magic.
+simd-json in Rust leverages SIMD (Single Instruction, Multiple Data) and zero-copy parsing at 
+a lower level than what Java libraries like Jackson can achieve — primarily because of JVM limitations like garbage collection, 
+memory instruction abstraction, and lack of direct SIMD usage.
+
+
+**Can we bring Rust's performance to our Java application without rewriting everything?**
+
+I faced a similar challenge in a JVM-based project.
+By using JNI (Java Native Interface), I integrated a Rust-based parser directly into the Java system with minimal overhead.
+
+In this blog, I'll walk you through how to tap into Rust's power using JNI — with a focus on comparing JSON 
+parsing performance using Jackson vs. simd-json. Json parsing may not be the best use case of these kind of optimizations 
+this specific problem statement is just used to show the usage of JNI.
+
+
+## World of JVM
+
+Before jumping into JNI and Rust, let's quickly talk about the JVM (Java Virtual Machine) just to understand why it sometimes hits a wall.
+
+Java runs on the JVM, which is a brilliant piece of engineering.
+It provides portability, memory safety, great tooling, and the "write once, run anywhere" capability.
+
+That's why Java is so heavily used in enterprise applications — and it serves that purpose well.
+
+But the JVM is not magic. It has trade-offs.
+
+One of them is memory management, handled via the Garbage Collector (GC).
+This is convenient for programmers — we don't have to worry about memory leaks or manual deallocation — but it also means we do not have full control.
+
+SIMD (Single Instruction, Multiple Data) allows CPUs to do highly parallel processing on chunks of data — like vector math used in deep learning.
+Rust and C++ leverage SIMD effectively. JVM? Not so much.
+It abstracts away lower-level control.
+That said, newer versions of Java support SIMD through the Vector API.
+
+There are tons of great resources on these topics to explore further.
+
+## 🔗 JNI (Java Native Interface)
+
+If you've never worked with JNI — don't worry, you might never need it.
+But it's good to know it exists and understand what it does.
+
+JNI is a way for Java code to call (or be called by) native applications or libraries written in languages like C, C++, or Rust.
+
+With JNI, we can escape the JVM sandbox and run code that can use system-level features to squeeze out raw performance — if needed.
+
+At a high level, JNI works like this:
+
+1. Declare a native method in your Java class.
+2. Write the implementation of that method in a native language (C, C++, Rust).
+3. Use System.loadLibrary() to load the compiled native code.
+4. Let the JVM pass data between Java and native code during runtime.
+
+While powerful, this comes with responsibility.
+Since it's quite low-level, we have to manage memory carefully and be explicit about what kind of data we pass across the boundary.
+
+I'm not an expert in this topic, but feel free to explore more if this interests you.
+
+## 🧪 Example: Porting a Rust JSON Parser to Java
+
+Let's look at how we integrate Rust with Java using JNI.
+
+The basic structure is:
+
+1. Java calls the native method parseJson(String path)
+2. Rust reads the file, parses the JSON, and returns a result string
+3. JNI serves as the bridge between them
+
+## 🦀 Rust Code
+
+```rust
 use std::fs;
 use jni::objects::{JClass, JString};
 use jni::sys::jstring;
@@ -173,25 +185,27 @@ fn null_string(env: &JNIEnv, msg: &str) -> jstring {
     env.new_string(msg).unwrap_or_default().into_raw()
 }
 ```
-The modules Cstr, CString, and c_char are to handle the string conversion between Rust adn C. The 
-function parse_json  is marked with #[no_mangle] and extern "C" -> This tells that Rust to expose this function 
-without name mangling and to use the C calling  convention so that JNI can call it safelty. 
 
-Naming Convention Note: The name of the Rust function must exactly match what the JVM expects. 
-If the Java class is named RustJsonParser and it declares a method native String parseJson(String json);, 
+The modules CStr, CString, and c_char help with string conversion between Rust and C.
+The function parse_json is marked with:
+
+- `#[no_mangle]` to avoid name mangling
+- `extern "system"` to use the C calling convention so JNI can call it safely
+
+### 📝 Naming Convention Note:
+If the Java class is named RustJsonParser and it declares a method `native String parseJson(String json);`,
 then the Rust function must be named:
-Java_RustJsonParser_parseJson
+
+`Java_RustJsonParser_parseJson`
 
 This naming rule is how JNI binds native functions to Java methods at runtime.
 
+## ☕ Java Class: RustJsonParser.java
 
-The Java Class(RustJsonParser.java) is responsible for bridging the JVM to the native Rust code. 
-It loads the compiled shared library (.dylib, .so, or .dll) using System.load(...) and 
-declares a native method parseJson(...), which Java expects to find in the loaded library.
-This class does not contain the logic for benchmarking or file iteration — its sole responsibility is to provide a thin 
-JNI wrapper around the Rust library.
+This class bridges the JVM to native Rust code.
+It loads the compiled shared library (.dylib, .so, or .dll) using System.load(...) and declares the native method.
 
-```
+```java
 public class RustJsonParser {
     static {
         System.load("/absolute/path/to/librust_json_parser.dylib");
@@ -199,14 +213,15 @@ public class RustJsonParser {
 
     public static native String parseJson(String path);
 }
-
 ```
 
-#### Java Benchmark App (Main.java)
+This class does not contain any benchmarking logic — it only provides a thin JNI wrapper around the Rust library.
 
-This class contains the actual logic i.e to laod the jsion file, pass the file to RustJsonParser.
+## 🚀 Java Benchmark App: Main.java
 
-```
+This class contains the actual logic to load the JSON file and pass the file path to the Rust parser.
+
+```java
 import java.io.*;
 
 public class Main {
@@ -223,22 +238,24 @@ public class Main {
         System.out.printf("Total time: %.2f ms\n", totalTime / 1_000_000.0);
     }
 }
-
 ```
 
+## 🧱 Build Rust for JVM Compatibility
 
-First we ompile Rust for x86_64-apple-darwin (important for JVM compatibility): [ I am using Mac M1].
+Since I'm on a Mac M1, I compiled Rust for x86_64-apple-darwin (important for JVM compatibility):
 
-```
+```bash
 cd rust_json_parser
 rustup target add x86_64-apple-darwin
 cargo build --release --target x86_64-apple-darwin
-
 ```
 
-The native compiled library "librust_json_parser.dylib" , we need to load this in the Java.  
+The native compiled library librust_json_parser.dylib can then be loaded into the Java application.
 
-Results:
+## ✅ Summary
 
-
+- Jackson is great for most use cases but starts to struggle with large real-time JSON parsing workloads.
+- Rust + simd-json can give massive performance improvements.
+- With JNI, you can get the best of both worlds: Java ecosystem + Rust speed.
+- JNI is low-level and requires caution — but it's a powerful tool when performance truly matters.
 
