@@ -100,12 +100,11 @@ That's why Java is so heavily used in enterprise applications — and it serves 
 
 But the JVM is not magic. It has trade-offs. One of them is memory management, handled via the Garbage Collector (GC).
 This is convenient for programmers — we don't have to worry about memory leaks or manual deallocation — 
-but it also means we do not have full control. SIMD (Single Instruction, Multiple Data) allows CPUs to do highly parallel 
-processing on chunks of data — like vector math used in deep learning.
+but it also means we do not have full control. 
 
-Rust and C++ leverage SIMD effectively. JVM? Not so much.
-It abstracts away lower-level control.
-That said, newer versions of Java support SIMD through the Vector API.
+SIMD (Single Instruction, Multiple Data) allows CPUs to do highly parallel 
+processing on chunks of data — like vector math used in deep learning. Rust and C++ leverage SIMD effectively. JVM? Not so much.
+It abstracts away lower-level control. That said, newer versions of Java support SIMD through the Vector API.
 
 There are tons of great resources on these topics to explore further.
 
